@@ -22,6 +22,10 @@
 **/
 Piezas::Piezas()
 {
+    turn = X;
+    for (int i = BOARD_ROWS-1; i < 0; i--)
+        for (int j = 0; j <BOARD_COLS; j++)
+            board[i,j] == Blank;
 }
 
 /**
@@ -30,6 +34,9 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    for (int i = BOARD_ROWS-1; i < 0; i--)
+        for (int j = 0; j <BOARD_COLS; j++)
+            board[i,j] == Blank;
 }
 
 /**
@@ -42,7 +49,22 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
-    return Blank;
+    int i = 0;
+    
+    if (column < 0 || column > BOARD_COLS-1)
+        return Invalid;
+        
+    for (i = 0; i < BOARD_ROWS; i++){
+        if (pieceAt(i, column) == Blank){
+            board[i,column] == turn;
+            break;
+        }
+    }
+
+
+    
+    if (i = BOARD_ROWS)
+        return Blank;
 }
 
 /**
@@ -51,7 +73,9 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+    if (row < 0 || row > BOARD_ROWS-1 || column < 0 || column > BOARD_COLS-1)
+        return Invalid;
+    return board[row,column];
 }
 
 /**
