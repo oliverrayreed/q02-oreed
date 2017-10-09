@@ -49,22 +49,33 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
-    int i = 0;
+    int i;
+    piece thisturn = turn;
     
     if (column < 0 || column > BOARD_COLS-1)
         return Invalid;
         
     for (i = 0; i < BOARD_ROWS; i++){
         if (pieceAt(i, column) == Blank){
-            board[i,column] == turn;
+            board[i,column] == thisturn;
             break;
         }
     }
-
-
+        
+    swtich (turn){
+        case X:
+        turn = O;
+        break;
+        case O:
+        turn = X;
+        break;
+        
+    }   
     
     if (i = BOARD_ROWS)
         return Blank;
+    else
+        return thisturn;
 }
 
 /**
