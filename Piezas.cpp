@@ -100,5 +100,23 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
+    int xMax = 0;
+    int oMax = 0;
+    Piece curr = X;
+    for (int i = 0; i < BOARD_ROWS; i++){
+        Piece last = pieceAt(i , 0);
+            if (last == X)
+                xMax++;
+            else if (last == O)
+                oMax++;
+        for (int j = 1; j < BOARD_COLS; j++){
+            curr = pieceAt(i, j);
+            if (curr == X && curr == last)
+                xMax ++;
+            else if (curr == O && curr == last)
+                oMax ++;
+            else 
+       }
+    }
     return Blank;
 }
